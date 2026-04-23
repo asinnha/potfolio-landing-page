@@ -590,6 +590,21 @@
     border-color: var(--accent-border);
     background: var(--accent-dim);
   }
+  .work-steam-btn {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 5px 14px;
+    text-decoration: none;
+    margin-left: auto;
+    transition: opacity 0.2s, transform 0.2s;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .work-steam-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 
   /* WORK TITLE */
   .work-title {
@@ -1509,9 +1524,9 @@
       <div class="work-header">
         <span class="work-num">001</span>
         <span class="work-client">Event Horizon Studios</span>
-        <span class="work-status featured">Media Available</span>
+        <a href="https://store.steampowered.com/app/4538420/DExtinction/" target="_blank" class="work-steam-btn">View on Steam ↗</a>
       </div>
-      <h3 class="work-title">Unannounced Horror Thriller Game</h3>
+      <h3 class="work-title">D-Extinction</h3>
       <div class="work-video-embed">
         <iframe src="https://drive.google.com/file/d/1c7djTyQcTKkBY0M4S7lzJx3OxmYKOH_t/preview" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
