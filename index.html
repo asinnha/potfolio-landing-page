@@ -10,18 +10,18 @@
 
 <style>
   :root {
-    --bg: #080808;
-    --bg-2: #0e0e0e;
-    --bg-3: #141414;
-    --surface: #1a1a1a;
-    --border: #222222;
-    --border-light: #2a2a2a;
-    --text: #e8e8e8;
-    --text-muted: #999;
-    --text-dim: #777;
-    --accent: #c8ff00;
-    --accent-dim: rgba(200,255,0,0.08);
-    --accent-border: rgba(200,255,0,0.2);
+    --bg: #ffffff;
+    --bg-2: #f4f5f7;
+    --bg-3: #eaecf0;
+    --surface: #f0f1f4;
+    --border: #e2e4e9;
+    --border-light: #d3d6dd;
+    --text: #111214;
+    --text-muted: #5b5f68;
+    --text-dim: #6b6f77;
+    --accent: #245ee0;
+    --accent-dim: rgba(36,94,224,0.08);
+    --accent-border: rgba(36,94,224,0.25);
     --red: #ff4444;
     --mono: 'DM Mono', monospace;
     --sans: 'Syne', sans-serif;
@@ -51,12 +51,11 @@
     z-index: 9999;
     transform: translate(-50%, -50%);
     transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
-    mix-blend-mode: difference;
     will-change: left, top;
   }
   .cursor-ring {
     width: 36px; height: 36px;
-    border: 1px solid rgba(200,255,0,0.4);
+    border: 1px solid rgba(36,94,224,0.4);
     border-radius: 50%;
     position: fixed;
     top: 0; left: 0;
@@ -67,19 +66,6 @@
     will-change: left, top;
   }
 
-  /* CURSOR GLOW — soft light that follows the pointer */
-  .cursor-glow {
-    width: 420px; height: 420px;
-    position: fixed;
-    top: 0; left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(200,255,0,0.12) 0%, rgba(200,255,0,0.05) 35%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-    mix-blend-mode: screen;
-    will-change: left, top;
-  }
 
   /* GRID BACKGROUND — subtle green grid, drifts slowly and brightens near the cursor */
   .bg-grid {
@@ -88,8 +74,8 @@
     z-index: 0;
     pointer-events: none;
     background-image:
-      linear-gradient(rgba(200,255,0,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200,255,0,0.07) 1px, transparent 1px);
+      linear-gradient(rgba(36,94,224,0.091) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(36,94,224,0.091) 1px, transparent 1px);
     background-size: 48px 48px;
     animation: gridDrift 24s linear infinite;
     -webkit-mask-image: radial-gradient(circle 480px at var(--mx, 50%) var(--my, 20%), rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.06) 100%);
@@ -122,20 +108,20 @@
     align-items: center;
     justify-content: space-between;
     padding: 18px 48px;
-    background-color: rgba(8, 8, 8, 0.55);
+    background-color: rgba(255, 255, 255, 0.55);
     background-image:
-      linear-gradient(rgba(200,255,0,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200,255,0,0.07) 1px, transparent 1px);
+      linear-gradient(rgba(36,94,224,0.091) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(36,94,224,0.091) 1px, transparent 1px);
     background-size: 48px 48px;
     background-attachment: fixed;
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.4s ease;
   }
   nav.scrolled {
-    background-color: rgba(8, 8, 8, 0.82);
-    border-bottom-color: rgba(200, 255, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.82);
+    border-bottom-color: rgba(36, 94, 224, 0.15);
   }
   nav.nav-hidden {
     transform: translateY(-100%);
@@ -184,7 +170,7 @@
     padding: 10px 14px;
     border-radius: 100px;
   }
-  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+  .nav-links a:hover { color: var(--text); background: rgba(0,0,0,0.04); }
   .nav-links a.active { color: var(--text); }
   .nav-cta {
     font-family: var(--mono);
@@ -216,8 +202,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px);
     background-size: 80px 80px;
     pointer-events: none;
   }
@@ -225,7 +211,7 @@
     position: absolute;
     top: -200px; left: -200px;
     width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(200,255,0,0.04) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(36,94,224,0.09) 0%, transparent 70%);
     pointer-events: none;
     animation: glowPulse 6s ease-in-out infinite;
   }
@@ -258,7 +244,7 @@
 
   .hero-title {
     font-family: var(--mono);
-    font-size: clamp(10px, 1.1vw, 13px);
+    font-size: clamp(15px, 1.6vw, 19px);
     color: var(--text-muted);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -277,7 +263,7 @@
   }
   .hero-tag-pill {
     font-family: var(--mono);
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -337,7 +323,7 @@
   }
   .section-label {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -441,7 +427,7 @@
   }
   .project-title {
     font-family: var(--serif);
-    font-size: 26px;
+    font-size: 30px;
     font-weight: 400;
     color: var(--text);
     line-height: 1.15;
@@ -450,7 +436,7 @@
   .project-card:hover .project-title { color: var(--accent); }
   .project-result {
     font-family: var(--sans);
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-muted);
     line-height: 1.65;
   }
@@ -514,7 +500,7 @@
 
   .testimonial-quote {
     font-family: var(--serif);
-    font-size: 20px;
+    font-size: 23px;
     font-style: italic;
     color: var(--text);
     line-height: 1.8;
@@ -537,13 +523,13 @@
   }
   .testimonial-name {
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     color: var(--text);
   }
   .testimonial-role {
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-muted);
     letter-spacing: 0.06em;
   }
@@ -827,7 +813,7 @@
     .nav-links { display: none; }
 
     body { cursor: auto; }
-    .cursor, .cursor-ring, .cursor-glow { display: none; }
+    .cursor, .cursor-ring { display: none; }
     .bg-grid { animation: none; -webkit-mask-image: none; mask-image: none; opacity: 0.5; }
 
     /* HERO */
@@ -852,7 +838,6 @@
 <body>
 
 <div class="bg-grid" id="bgGrid"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
@@ -1044,7 +1029,6 @@
   // CURSOR
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
-  const glow = document.getElementById('cursorGlow');
   const root = document.documentElement;
   let mx = 0, my = 0, rx = 0, ry = 0;
 
@@ -1055,8 +1039,6 @@
     // Set position via left/top so the dot always tracks the exact pixel
     cursor.style.left = mx + 'px';
     cursor.style.top  = my + 'px';
-    glow.style.left = mx + 'px';
-    glow.style.top  = my + 'px';
     // Feed the grid's radial mask so it brightens around the pointer
     root.style.setProperty('--mx', mx + 'px');
     root.style.setProperty('--my', my + 'px');
