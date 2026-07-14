@@ -342,27 +342,15 @@
   /* PROJECTS — horizontal-scroll card carousel */
   .projects { padding-top: 24px; padding-bottom: 8px; }
   .project-track {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 24px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    cursor: inherit;
-    padding-bottom: 8px;
-    user-select: none;
     align-items: stretch;
   }
-  .project-track::-webkit-scrollbar { display: none; }
-  .project-track.dragging { cursor: inherit; }
 
   /* Squircle approximation — see note on .testimonial-card */
   .project-card {
-    min-width: 400px;
-    max-width: 400px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
+    width: 100%;
     background: var(--bg-2);
     border: 1px solid var(--border);
     border-radius: 32px;
@@ -380,6 +368,7 @@
     background: var(--bg-3);
     border-bottom: 1px solid var(--border);
     overflow: hidden;
+    border-radius: 32px 32px 0 0;
   }
   .project-media iframe {
     position: absolute;
@@ -388,6 +377,7 @@
     height: 100%;
     border: none;
     display: block;
+    border-radius: 32px 32px 0 0;
   }
 
   .project-body {
@@ -825,9 +815,9 @@
 
     /* SECTIONS */
     section { padding: 48px 20px; }
-    /* vw-based so the card scales with the viewport instead of a fixed
-       px that either squeezes content or barely peeks the next card */
-    .project-card { min-width: min(360px, 84vw); max-width: min(360px, 84vw); border-radius: 24px; }
+    .project-track { grid-template-columns: 1fr; }
+    .project-card { border-radius: 24px; }
+    .project-media, .project-media iframe { border-radius: 24px 24px 0 0; }
     .contact-inner { grid-template-columns: 1fr; gap: 40px; }
     .contact-sub { font-size: 15px; max-width: 100%; }
     footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
@@ -1152,7 +1142,7 @@
   reveals.forEach(el => observer.observe(el));
 
 
-  // DRAG SCROLL (used by both project and testimonial carousels)
+  // DRAG SCROLL (testimonial carousel only — projects moved to a tile grid)
   function enableDragScroll(el) {
     if (!el) return;
     let isDown = false, startX, scrollLeft;
@@ -1171,7 +1161,6 @@
       el.scrollLeft = scrollLeft - (x - startX) * 1.5;
     });
   }
-  enableDragScroll(document.getElementById('projectTrack'));
   enableDragScroll(document.getElementById('testimonialTrack'));
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
